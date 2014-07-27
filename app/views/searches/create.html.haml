@@ -1,0 +1,10 @@
+- if @offers.any?
+  - @offers.each do |offer|
+    .offer
+      .title= offer.title
+      .payout= offer.payout
+      .thumbnail= offer.thumbnail[:lower]
+- else
+  .no_offers No offers
+
+= link_to "New Search", new_search_path, class: "btn btn-primary"

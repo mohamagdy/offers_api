@@ -22,10 +22,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 
 # Testing
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
-  gem 'webmock'
-end
+gem 'rspec-rails', '~> 3.0.0', group: [:development, :test]
+gem 'webmock', group: :test
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -38,3 +36,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Twitter Bootstrap
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+
+# Haml
+gem 'haml-rails'
