@@ -23,7 +23,8 @@ module ApiResponseValidator
 
       # Check if the response is valid and returns a boolean
       def valid_response?(response)
-        generate_hash_key(response.body) == response["X-Sponsorpay-Response-Signature"]
+        signature_header = Rails.application.secrets.api["signature_header"]
+        generate_hash_key(response.body) == response[signature_header]
       end
     end
   end

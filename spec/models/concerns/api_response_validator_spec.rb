@@ -15,7 +15,7 @@ RSpec.describe ApiResponseValidator do
       stub_request(:get, "#{site}#{path}").to_return(
         status: 200,
         body: body,
-        headers: { "X-Sponsorpay-Response-Signature" => signed_response }
+        headers: { Rails.application.secrets.api["signature_header"] => signed_response }
       )
 
       response = connection.get(path)
@@ -28,7 +28,7 @@ RSpec.describe ApiResponseValidator do
       stub_request(:get, "#{site}#{path}").to_return(
         status: 200,
         body: body,
-        headers: { "X-Sponsorpay-Response-Signature" => signed_response }
+        headers: { Rails.application.secrets.api["signature_header"] => signed_response }
       )
 
       expect{ connection.get(path) }.to raise_error(ApiResponseValidator::InvalidSignedResponse)
